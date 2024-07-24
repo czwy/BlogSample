@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChinesePhoneticizeFuzzyMatch", "ChinesePhoneticizeFuzzyMatch\ChinesePhoneticizeFuzzyMatch.csproj", "{84BE0B91-DF00-4A11-8E96-9078150475BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{84BE0B91-DF00-4A11-8E96-9078150475BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BE0B91-DF00-4A11-8E96-9078150475BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BE0B91-DF00-4A11-8E96-9078150475BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BE0B91-DF00-4A11-8E96-9078150475BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A470F5D8-414C-44B7-BA4A-72B37B9FDA66}
+	EndGlobalSection
+EndGlobal
