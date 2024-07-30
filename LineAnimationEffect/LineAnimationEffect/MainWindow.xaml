@@ -1,0 +1,147 @@
+﻿<Window
+    x:Class="LineAnimationEffect.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:LineAnimationEffect"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <LinearGradientBrush x:Key="linearBrush" StartPoint="0 1" EndPoint="1 0">
+            <GradientStop Offset="0.25" Color="#399953" />
+            <GradientStop Offset="0.5" Color="#fbb300" />
+            <GradientStop Offset="0.75" Color="#d53e33" />
+            <GradientStop Offset="1" Color="#377af5" />
+        </LinearGradientBrush>
+        <Storyboard x:Key="moveanimation" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="trigle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00" Value="20" />
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-99" />
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-99" />
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="-240" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="trigle" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="0" />
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="80" />
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="80" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="moveLines" RepeatBehavior="Forever">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="polyline1" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.800" Value="-100" />
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="-121" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="polyline2" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.Y)">
+                <EasingDoubleKeyFrame KeyTime="00:00:00.800" Value="0" />
+                <EasingDoubleKeyFrame KeyTime="00:00:01" Value="20" />
+                <EasingDoubleKeyFrame KeyTime="00:00:01.8" Value="80" />
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="101" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="polyline3" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)">
+                <EasingDoubleKeyFrame KeyTime="00:00:01.8" Value="0" />
+                <EasingDoubleKeyFrame KeyTime="00:00:02" Value="-20" />
+                <EasingDoubleKeyFrame KeyTime="00:00:03" Value="-160" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="5">
+            <Polyline Points="240 20 140 20 140 100 0 100" Stroke="#ddd" />
+            <Polyline
+                Points="240 20 140 20 140 100 0 100"
+                Stroke="red"
+                StrokeDashArray="20 300">
+                <Polyline.Triggers>
+                    <EventTrigger RoutedEvent="Polyline.Loaded">
+                        <BeginStoryboard>
+                            <Storyboard RepeatBehavior="Forever" Storyboard.TargetProperty="StrokeDashOffset">
+                                <DoubleAnimation
+                                    From="0"
+                                    To="-320"
+                                    Duration="0:0:3" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Polyline.Triggers>
+            </Polyline>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Polyline Points="240 20 140 20 140 100 0 100" Stroke="#ddd" />
+            <Polygon
+                x:Name="trigle"
+                Fill="{StaticResource linearBrush}"
+                Points="240 19 240 40 220 19">
+                <Polygon.RenderTransform>
+                    <TranslateTransform />
+                </Polygon.RenderTransform>
+                <Polygon.Triggers>
+                    <EventTrigger RoutedEvent="Polygon.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource moveanimation}" />
+                    </EventTrigger>
+                </Polygon.Triggers>
+            </Polygon>
+            <Polygon
+                d:IsLocked="True"
+                Fill="#fff"
+                Points="240,19 139,19 139,99 0,99 0,79 119,79 119,0 240,0 240,19 240,21 141,21 141,101 0,101 0,99 -20,99 -20,101 -20,122 161,122 161,41 260,41 260,19" />
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <Polyline Points="240 20 140 20 140 100 0 100" Stroke="#ddd" />
+            <Polyline
+                x:Name="polyline1"
+                Points="260 20 240 20"
+                Stroke="{StaticResource linearBrush}">
+                <Polyline.RenderTransform>
+                    <TranslateTransform />
+                </Polyline.RenderTransform>
+                <Polyline.Triggers>
+                    <EventTrigger RoutedEvent="Polygon.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource moveLines}" />
+                    </EventTrigger>
+                </Polyline.Triggers>
+            </Polyline>
+            <Polyline
+                x:Name="polyline2"
+                Points="140 0 140 20"
+                Stroke="{StaticResource linearBrush}">
+                <Polyline.RenderTransform>
+                    <TranslateTransform />
+                </Polyline.RenderTransform>
+                <Polyline.Triggers>
+                    <EventTrigger RoutedEvent="Polygon.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource moveLines}" />
+                    </EventTrigger>
+                </Polyline.Triggers>
+            </Polyline>
+            <Polyline
+                x:Name="polyline3"
+                Points="160 100 140 100"
+                Stroke="{StaticResource linearBrush}">
+                <Polyline.RenderTransform>
+                    <TranslateTransform />
+                </Polyline.RenderTransform>
+                <Polyline.Triggers>
+                    <EventTrigger RoutedEvent="Polygon.Loaded">
+                        <BeginStoryboard Storyboard="{StaticResource moveLines}" />
+                    </EventTrigger>
+                </Polyline.Triggers>
+            </Polyline>
+            <Polygon Fill="#fff" Points="240,19 139,19 139,99 0,99 0,79 119,79 119,0 240,0 240,19 240,21 141,21 141,101 0,101 0,99 -20,99 -20,101 -20,122 161,122 161,41 260,41 260,19" />
+        </Grid>
+    </Grid>
+</Window>
