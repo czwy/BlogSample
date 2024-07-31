@@ -1,0 +1,149 @@
+<Window
+    x:Class="AvaloniaLineAnimation.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AvaloniaLineAnimation"
+    d:DesignHeight="550"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <Window.Styles>
+        <Style Selector="Polyline.StrokeDashOffset">
+            <Style.Animations>
+                <Animation IterationCount="Infinite" Duration="0:0:3">
+                    <KeyFrame Cue="0">
+                        <Setter Property="StrokeDashOffset" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="StrokeDashOffset" Value="-300" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="Polygon.triangle">
+            <Style.Animations>
+                <Animation IterationCount="Infinite" Duration="0:0:3">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="TranslateTransform.X" Value="240" />
+                        <Setter Property="TranslateTransform.Y" Value="20" />
+                    </KeyFrame>
+                    <KeyFrame Cue="33%">
+                        <Setter Property="TranslateTransform.X" Value="120" />
+                        <Setter Property="TranslateTransform.Y" Value="20" />
+                    </KeyFrame>
+                    <KeyFrame Cue="66%">
+                        <Setter Property="TranslateTransform.X" Value="120" />
+                        <Setter Property="TranslateTransform.Y" Value="100" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="TranslateTransform.X" Value="-20" />
+                        <Setter Property="TranslateTransform.Y" Value="100" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </Window.Styles>
+    <Window.Resources>
+        <LinearGradientBrush x:Key="linearBrush" StartPoint="0 240" EndPoint="240 0">
+            <GradientStop Offset="0.25" Color="#399953" />
+            <GradientStop Offset="0.5" Color="#fbb300" />
+            <GradientStop Offset="0.75" Color="#d53e33" />
+            <GradientStop Offset="1" Color="#377af5" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="linearBrush1" StartPoint="220 40" EndPoint="240 20">
+            <GradientStop Offset="0.25" Color="#399953" />
+            <GradientStop Offset="0.5" Color="#fbb300" />
+            <GradientStop Offset="0.75" Color="#d53e33" />
+            <GradientStop Offset="1" Color="#377af5" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="linearBrush2" StartPoint="0% 100%" EndPoint="100% 0%">
+            <GradientStop Offset="0.25" Color="#399953" />
+            <GradientStop Offset="0.5" Color="#fbb300" />
+            <GradientStop Offset="0.75" Color="#d53e33" />
+            <GradientStop Offset="1" Color="#377af5" />
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid ColumnDefinitions="auto,auto,auto" ShowGridLines="True">
+        <Grid Grid.Column="0">
+            <Polyline Points="240 20 140 20 140 100 0 100" Stroke="#ddd" />
+            <Polyline
+                Classes="StrokeDashOffset"
+                Points="240 20 140 20 140 100 0 100"
+                Stroke="red"
+                StrokeDashArray="20,300" />
+        </Grid>
+        <Grid Grid.Column="1">
+            <Polyline Points="240 20 140 20 140 100 0 100" Stroke="#ddd" />
+            <Polygon
+                Classes="triangle"
+                Fill="{StaticResource linearBrush2}"
+                Points="20 0 20 20 0 0" />
+            <Polygon Fill="White" Points="240,19 139,19 139,99 0,99 0,79 119,79 119,0 240,0 240,19 240,21 141,21 141,101 0,101 0,99 -20,99 -20,101 -20,122 161,122 161,41 260,41 260,19" />
+        </Grid>
+        <Grid Grid.Column="2" RowDefinitions="auto,auto">
+            <Grid Grid.Row="0">
+                <!--<Polygon Fill="{StaticResource linearBrush}" Points="40 0 40 40 0 40 0 0" />
+            <Polygon Fill="{StaticResource linearBrush}" Points="40 40 40 80 0 80 0 40" />-->
+
+
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,0 40,0 40,40 0,40" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,0 80,0 80,40 40,40" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,0 120,0 120,40 80,40" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,0 160,0 160,40 120,40" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,0 200,0 200,40 160,40" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,0 240,0 240,40 200,40" />
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,40 40,40 40,80 0,80" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,40 80,40 80,80 40,80" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,40 120,40 120,80 80,80" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,40 160,40 160,80 120,80" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,40 200,40 200,80 160,80" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,40 240,40 240,80 200,80" />
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,80 40,80 40,120 0,120" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,80 80,80 80,120 40,120" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,80 120,80 120,120 80,120" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,80 160,80 160,120 120,120" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,80 200,80 200,120 160,120" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,80 240,80 240,120 200,120" />
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,120 40,120 40,160 0,160" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,120 80,120 80,160 40,160" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,120 120,120 120,160 80,160" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,120 160,120 160,160 120,160" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,120 200,120 200,160 160,160" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,120 240,120 240,160 200,160" />
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,160 40,160 40,200 0,200" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,160 80,160 80,200 40,200" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,160 120,160 120,200 80,200" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,160 160,160 160,200 120,200" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,160 200,160 200,200 160,200" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,160 240,160 240,200 200,200" />
+
+                <Polygon Fill="{StaticResource linearBrush}" Points="0,200 40,200 40,240 0,240" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="40,200 80,200 80,240 40,240" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="80,200 120,200 120,240 80,240" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="120,200 160,200 160,240 120,240" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="160,200 200,200 200,240 160,240" />
+                <Polygon Fill="{StaticResource linearBrush}" Points="200,200 240,200 240,240 200,240" />
+
+                <Path
+                    Data="M0,40 L300,40 M0,80 L300,80 M0,120 L300,120 M0,160 L300,160 M0,200 L300,200 M0,240 L300,240 M40,0 L40,300 M80,0 L80,300 M120,0 L120,300 M160,0 L160,300 M200,0 L200,300 M240,0 L240,300"
+                    Stroke="#ddd"
+                    StrokeThickness="1" />
+            </Grid>
+            <Grid Grid.Row="1">
+                <Polygon Fill="{StaticResource linearBrush2}" Points="0 0 240 0 240 240 0 240" />
+                <Path
+                    Data="M0,40 L300,40 M0,80 L300,80 M0,120 L300,120 M0,160 L300,160 M0,200 L300,200 M0,240 L300,240 M40,0 L40,300 M80,0 L80,300 M120,0 L120,300 M160,0 L160,300 M200,0 L200,300 M240,0 L240,300"
+                    Stroke="#ddd"
+                    StrokeThickness="1" />
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
