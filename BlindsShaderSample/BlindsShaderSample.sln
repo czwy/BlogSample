@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35122.118
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlindsShaderSample", "BlindsShaderSample\BlindsShaderSample.csproj", "{BC3B3182-CD1A-4085-ABC3-C97EC8981C8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BC3B3182-CD1A-4085-ABC3-C97EC8981C8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC3B3182-CD1A-4085-ABC3-C97EC8981C8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC3B3182-CD1A-4085-ABC3-C97EC8981C8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC3B3182-CD1A-4085-ABC3-C97EC8981C8E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EC72225-A532-41F0-9AD8-7C685F340F39}
+	EndGlobalSection
+EndGlobal
